@@ -51,6 +51,16 @@ func ParseRequestURL(r *http.Request) {
 
 func ParseDynamicUrl(url string) string {
 	result := url
+
+	// 处理只有端口的情况（如 ":8080" -> "http://192.168.1.100:8080"）
+	if strings.HasPrefix(result, ":") && len(result) > 1 {
+		// 检查是否为纯数字端口
+		portStr := result[1:]
+		if _, err := regexp.MatchString(`^\d+$`, portStr); err == nil {
+			result = RequestURL.Protocol + "//" + RequestURL.Hostname + result
+		}
+	}
+
 	result = strings.ReplaceAll(result, "{host}", RequestURL.Host)
 	result = strings.ReplaceAll(result, "{hostname}", RequestURL.Hostname)
 	result = strings.ReplaceAll(result, "{href}", RequestURL.Href)
