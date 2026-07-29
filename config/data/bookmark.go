@@ -17,12 +17,12 @@ func initBookmarks(filePath string, isFavorite bool) (result FlareModel.Bookmark
 	const exampleDesc = "链接描述文本"
 
 	var exampleIcons = [28]string{
-		"evernote", "FireHydrant", "email", "MicrosoftOnenote",
-		"Robber", "EvPlugType1", "FileImage", "WeatherHazy",
-		"checkDecagram", "sofaOutline", "foodCroissant", "musicCircleOutline", "eraser",
-		"BowArrow", "KeyboardOutline", "Incognito", "mastodon", "messageCog",
-		"alphaFCircleOutline", "alphaLCircleOutline", "alphaACircleOutline", "alphaRCircleOutline", "alphaECircleOutline",
-		"accountSupervisorCircle", "flask", "cityVariantOutline", "alphaYCircleOutline", "sproutOutline",
+		"sticky-note-line", "fire-line", "mail-line", "file-text-line",
+		"skull-line", "plug-line", "image-line", "sun-cloudy-line",
+		"checkbox-circle-line", "sofa-line", "restaurant-line", "music-2-line", "eraser-line",
+		"focus-line", "keyboard-line", "spy-line", "mastodon-line", "chat-settings-line",
+		"book-line", "bookmark-line", "a-b", "link", "quill-pen-line",
+		"group-line", "flask-line", "building-line", "palette-line", "seedling-line",
 	}
 
 	if isFavorite {

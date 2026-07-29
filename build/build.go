@@ -6,8 +6,8 @@ import (
 
 func main() {
 	builder.TaskForMdi(
-		"embed/assets/vendor/mdi-cheat-sheets", "internal/resources/mdi/mdi-cheat-sheets",
-		"embed/assets/vendor/mdi/mdi.js", "internal/resources/mdi/icons.go",
+		"", "internal/resources/mdi/mdi-cheat-sheets",
+		"embed/assets/vendor/remixicon/paths.json", "internal/resources/mdi/icons.go",
 	)
 	builder.TaskForSimpleIcons("internal/resources/simpleicon")
 	builder.TaskForGuideAssets("embed/assets/vendor/guide-assets", "internal/pages/guide/guide-assets")

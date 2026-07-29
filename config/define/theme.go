@@ -23,7 +23,7 @@ func Init() {
 // 页面内缓存
 var _CACHE_PAGE_INLINE_STYLE template.CSS
 
-// 用于mdi
+// 用于内置图标 fill
 var CACHE_APP_CURRENT_THEME_PRIMARY_COLOR string
 var _CACHE_PREV_THEME_NAME string
 

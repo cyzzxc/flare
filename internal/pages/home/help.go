@@ -14,19 +14,19 @@ func GenerateHelpTemplate() template.HTML {
 		{
 			Name: "程序首页",
 			URL:  FlareDefine.RegularPages.Home.Path,
-			Icon: "homeCircle",
+			Icon: "home-line",
 			Desc: "",
 		},
 		{
 			Name: "帮助页面",
 			URL:  FlareDefine.RegularPages.Help.Path,
-			Icon: "helpCircle",
+			Icon: "question-line",
 			Desc: "",
 		},
 		{
 			Name: "程序设置",
 			URL:  FlareDefine.RegularPages.Settings.Path,
-			Icon: "fireCircle",
+			Icon: "settings-3-line",
 			Desc: "",
 		},
 	}...)
@@ -35,7 +35,7 @@ func GenerateHelpTemplate() template.HTML {
 		apps = append(apps, FlareModel.Bookmark{
 			Name: "向导页面",
 			URL:  FlareDefine.RegularPages.Guide.Path,
-			Icon: "radioactiveCircleOutline",
+			Icon: "compass-3-line",
 			Desc: "",
 		})
 	}
@@ -44,7 +44,7 @@ func GenerateHelpTemplate() template.HTML {
 		apps = append(apps, FlareModel.Bookmark{
 			Name: "内容编辑",
 			URL:  FlareDefine.RegularPages.Editor.Path,
-			Icon: "pencilCircle",
+			Icon: "edit-circle-line",
 			Desc: "",
 		})
 	}
@@ -53,49 +53,43 @@ func GenerateHelpTemplate() template.HTML {
 		{
 			Name: "图标挑选",
 			URL:  FlareDefine.RegularPages.Icons.Path,
-			Icon: "heartCircle",
+			Icon: "heart-line",
 			Desc: "",
 		},
 		{
 			Name: "主题设置",
 			URL:  FlareDefine.SettingPages.Theme.Path,
-			Icon: "starCircle",
+			Icon: "star-line",
 			Desc: "",
 		},
-		// {
-		// 	Name: "主题预览",
-		// 	URL:  "/preview",
-		// 	Icon: "incognitoCircle",
-		// 	Desc: "",
-		// },
 		{
 			Name: "天气设置",
 			URL:  FlareDefine.SettingPages.Weather.Path,
-			Icon: "leafCircle",
+			Icon: "leaf-line",
 			Desc: "",
 		},
 		{
 			Name: "搜索设置",
 			URL:  FlareDefine.SettingPages.Search.Path,
-			Icon: "lightningBoltCircle",
+			Icon: "flashlight-line",
 			Desc: "",
 		},
 		{
 			Name: "界面设置",
 			URL:  FlareDefine.SettingPages.Appearance.Path,
-			Icon: "leafCircle",
+			Icon: "palette-line",
 			Desc: "",
 		},
 		{
 			Name: "程序版本",
 			URL:  FlareDefine.SettingPages.Others.Path,
-			Icon: "commaCircle",
+			Icon: "information-line",
 			Desc: "",
 		},
 		{
 			Name: "问题反馈",
 			URL:  "https://github.com/soulteary/docker-flare/issues",
-			Icon: "crownCircle",
+			Icon: "bug-line",
 			Desc: "GitHub Issues",
 		},
 	}...)
