@@ -64,3 +64,7 @@ func UpdateAppearance(update FlareModel.Application) bool {
 
 	return saveAppConfigToYamlFile("config", options)
 }
+
+func SaveAllSettingsOptions(options FlareModel.Application) bool {
+	return saveAppConfigToYamlFile("config", options)
+}

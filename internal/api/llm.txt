@@ -1,0 +1,79 @@
+# Flare LLM guide
+
+Single-binary bookmark homepage. Data lives as YAML in process cwd.
+No database. Icons: Remix Icon (kebab-case names).
+
+## API (default on, no auth unless api_key set)
+
+Base: /api/v1
+Auth (optional): Authorization: Bearer <key>  OR  X-API-Key: <key>
+Response: {"ok":true,"data":...} | {"ok":false,"error":"..."}
+
+GET  /api/v1                 this index (JSON)
+GET  /api/v1/apps            whole apps.yml
+PUT  /api/v1/apps            replace apps.yml
+GET  /api/v1/bookmarks       whole bookmarks.yml
+PUT  /api/v1/bookmarks       replace bookmarks.yml
+GET  /api/v1/settings        whole config.yml
+PUT  /api/v1/settings        replace config.yml
+GET  /api/v1/icons?q=&limit=20   search Remix icon names
+
+## Apps / bookmarks document (JSON)
+
+{
+  "categories": [{"id":"cate-id-0","title":"Work"}],
+  "links": [
+    {
+      "name": "GitHub",
+      "link": "https://github.com",
+      "icon": "github-line",
+      "desc": "optional",
+      "category": "cate-id-0",
+      "private": false
+    }
+  ]
+}
+
+- apps.yml = favorite tiles on home (usually no categories)
+- bookmarks.yml = bookmark list (uses categories)
+- PUT replaces the FULL document; always GET first, edit, PUT back
+- name + link required; empty links array is valid
+- icon: Remix name OR http(s) URL; unknown non-URL icon -> 400
+- private: hide when visibility is restricted
+
+## Icons
+
+GET /api/v1/icons?q=mail&limit=20
+Returns {"icons":["mail-line","mail-fill",...]}
+Also browse UI: /icons  (click name to copy)
+Do not invent icon names; search first.
+
+## Settings (config.yml JSON fields)
+
+Title, Footer, Theme, Greetings, Location,
+OpenAppNewTab, OpenBookmarkNewTab, ShowTitle, ShowSearchComponent,
+DisabledSearchAutoFocus, ShowDateTime, ShowApps, ShowBookmarks,
+HideSettingButton, HideHelpButton, ShowWeather, EnableEncryptedLink,
+IconMode ("DEFAULT"|"FILLING"), KeepLetterCase
+
+## Runtime files (cwd)
+
+apps.yml  bookmarks.yml  config.yml  .env
+
+## Flags / env (subset)
+
+--enable_api / FLARE_API          default true
+--api_key / FLARE_API_KEY         empty = open API
+--port / FLARE_PORT               default 5005
+--disable_login / FLARE_DISABLE_LOGIN
+--enable_editor / FLARE_EDITOR
+
+## Suggested agent workflow
+
+1. GET /api/v1/apps and/or /bookmarks
+2. GET /api/v1/icons?q=<keyword> pick icon
+3. Merge change into full document
+4. PUT same path with full body
+5. Verify with GET
+
+Human UI: /  home · /help · /editor · /settings · /icons · /llm.txt (this file)

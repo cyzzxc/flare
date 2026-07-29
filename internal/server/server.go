@@ -17,6 +17,7 @@ import (
 	FlareModel "github.com/soulteary/flare/config/model"
 	FlareLogger "github.com/soulteary/flare/internal/logger"
 
+	FlareAPI "github.com/soulteary/flare/internal/api"
 	FlareAuth "github.com/soulteary/flare/internal/auth"
 	FlareAssets "github.com/soulteary/flare/internal/resources/assets"
 	FlareMDI "github.com/soulteary/flare/internal/resources/mdi"
@@ -84,6 +85,12 @@ func StartDaemon(AppFlags *FlareModel.Flags) {
 	if AppFlags.EnableGuide {
 		FlareGuide.RegisterRouting(router)
 		log.Info("向导模块启用，可以访问 " + FlareDefine.RegularPages.Guide.Path + " 来获取程序使用帮助。")
+	}
+
+	// /llm.txt always; /api/v1 when EnableAPI
+	FlareAPI.RegisterRouting(router)
+	if AppFlags.EnableAPI {
+		log.Info("REST API 已注册：/api/v1 · 指南 /llm.txt")
 	}
 
 	srv := &http.Server{

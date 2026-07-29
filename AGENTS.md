@@ -41,18 +41,38 @@ Docker/release also run `go run build/build.go` first (see `Dockerfile`, `.gorel
 ## Icons & bookmarks
 
 - Bookmark/app `icon` field: Remix name, or `http(s)://` URL.
-- Empty/unknown name → no icon. Old MDI names (e.g. `homeCircle`) no longer resolve.
+- Empty/unknown name → no icon. **No MDI→Remix mapping** — old names (`homeCircle`) render blank.
 - `IconMode` FILLING uses Yandex favicon with Remix path as fallback (`internal/fn/favicon.go`).
+- Search helpers: `FlareMDI.SearchIcons` / `IconExists` in `internal/resources/mdi`.
 
 ## Conventions (project-specific)
 
 - Prefer plain functions over pointer receivers; care about allocs (`CONVENTIONS-OF-CODE.md`).
 - `gofmt -s`; std `go test` only (testify ok).
-- Default port **5005** (`config/define/cmd.go`). Health: `/health`.
+- Default port **5005** (`config/define/cmd.go`). Health JSON: `GET /ping`.
 - Do not add deps for what a few lines + stdlib cover.
+
+## REST API
+
+On by default (`--enable_api` / `FLARE_API`). Optional auth: `--api_key` / `FLARE_API_KEY` (Bearer or `X-API-Key`); empty key = open.
+
+| Method | Path | Body |
+|--------|------|------|
+| GET | `/api/v1` | index / notes for agents |
+| GET/PUT | `/api/v1/apps` | whole `apps.yml` (`Bookmarks` JSON) |
+| GET/PUT | `/api/v1/bookmarks` | whole `bookmarks.yml` |
+| GET/PUT | `/api/v1/settings` | whole `config.yml` (`Application`) |
+| GET | `/api/v1/icons?q=&limit=20` | Remix name search |
+
+- Code: `internal/api/` · registered from `internal/server`.
+- PUT replaces the full document. Fields: `name`, `link`, `icon`, `desc`, `category`, `private`.
+- Unknown non-URL icons rejected on PUT.
+- Agent guide (always, no auth): `GET /llm.txt` ← `internal/api/llm.txt`. Linked from `/help`.
 
 ## Gotchas
 
 - Fresh clone / clean tree: if embed targets missing, run `go run build/build.go` before compile.
 - Tests under `config/data` may touch workdir YAML paths; prefer package-scoped runs when iterating.
 - Login/auth defaults: without `FLARE_USER`/`FLARE_PASS`, username defaults and password is auto-generated (logged at start). `--disable-login` skips auth for local UI work.
+- API is independent of session login; empty `api_key` means open if API is enabled.
+- Do not commit local binary `flare` or workdir `*.yml` / `.env`.

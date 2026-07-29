@@ -23,6 +23,13 @@ func Parse() FlareModel.Flags {
 	log.Info("程序服务端口", slog.Int(_KEY_PORT, flags.Port))
 	log.Info("页面请求合并", slog.Bool(_KEY_MINI_REQUEST, flags.EnableMinimumRequest))
 	log.Info("启用离线模式", slog.Bool(_KEY_ENABLE_OFFLINE, flags.EnableOfflineMode))
+	if flags.EnableAPI {
+		if flags.APIKey == "" {
+			log.Info("REST API 已启用（/api/v1），未设置 api_key，接口无需鉴权")
+		} else {
+			log.Info("REST API 已启用（/api/v1），使用 Bearer api_key 鉴权")
+		}
+	}
 	if flags.DisableLoginMode {
 		log.Info("已禁用登陆模式，用户可直接调整应用设置。")
 	} else {

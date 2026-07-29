@@ -18,10 +18,10 @@ func GenerateHelpTemplate() template.HTML {
 			Desc: "",
 		},
 		{
-			Name: "帮助页面",
-			URL:  FlareDefine.RegularPages.Help.Path,
-			Icon: "question-line",
-			Desc: "",
+			Name: "LLM 指南",
+			URL:  "/llm.txt",
+			Icon: "robot-line",
+			Desc: "给 Agent 的 API 说明",
 		},
 		{
 			Name: "程序设置",

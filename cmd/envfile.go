@@ -100,6 +100,8 @@ func ParseEnvFile(baseFlags FlareModel.Flags) FlareModel.Flags {
 	baseFlags.EnableMinimumRequest = GetDotEnvFileBoolOrDefault(envs, "FLARE_MINI_REQUEST", baseFlags.EnableMinimumRequest)
 	baseFlags.EnableOfflineMode = GetDotEnvFileBoolOrDefault(envs, "FLARE_OFFLINE", baseFlags.EnableOfflineMode)
 	baseFlags.EnableEditor = GetDotEnvFileBoolOrDefault(envs, "FLARE_EDITOR", baseFlags.EnableEditor)
+	baseFlags.EnableAPI = GetDotEnvFileBoolOrDefault(envs, "FLARE_API", baseFlags.EnableAPI)
+	baseFlags.APIKey = GetDotEnvFileStringOrDefault(envs, "FLARE_API_KEY", baseFlags.APIKey)
 	baseFlags.EnableGuide = GetDotEnvFileBoolOrDefault(envs, "FLARE_GUIDE", baseFlags.EnableGuide)
 	baseFlags.Visibility = GetDotEnvFileStringOrDefault(envs, "FLARE_VISIBILITY", baseFlags.Visibility)
 	baseFlags.CookieName = GetDotEnvFileStringOrDefault(envs, "FLARE_COOKIE_NAME", baseFlags.CookieName)

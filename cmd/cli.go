@@ -36,6 +36,8 @@ func GetCliFlags() (*FlareModel.Flags, *flags.FlagSet) {
 	// 启用废弃日志警告
 	options.BoolVarP(&cliFlags.EnableDeprecatedNotice, _KEY_ENABLE_DEPRECATED_NOTICE, _KEY_ENABLE_DEPRECATED_NOTICE_SHORT, FlareDefine.DEFAULT_ENABLE_DEPRECATED_NOTICE, "启用废弃日志警告")
 	options.BoolVarP(&cliFlags.EnableEditor, _KEY_ENABLE_EDITOR, _KEY_ENABLE_EDITOR_SHORT, FlareDefine.DEFAULT_ENABLE_EDITOR, "启用编辑器")
+	options.BoolVarP(&cliFlags.EnableAPI, _KEY_ENABLE_API, _KEY_ENABLE_API_SHORT, FlareDefine.DEFAULT_ENABLE_API, "启用 REST API (/api/v1)")
+	options.StringVarP(&cliFlags.APIKey, _KEY_API_KEY, _KEY_API_KEY_SHORT, "", "API 密钥（Bearer），启用 API 时建议设置")
 	// 禁用 CSP
 	options.BoolVarP(&cliFlags.DisableCSP, _KEY_DISABLE_CSP, _KEY_DISABLE_CSP_SHORT, FlareDefine.DEFAULT_DISABLE_CSP, "禁用CSP")
 	// 其他
@@ -131,6 +133,14 @@ func parseCLI(baseFlags FlareModel.Flags) FlareModel.Flags {
 
 	if CheckFlagsExists(keys, []string{_KEY_ENABLE_EDITOR, _KEY_ENABLE_EDITOR_SHORT}) {
 		baseFlags.EnableEditor = cliFlags.EnableEditor
+	}
+
+	if CheckFlagsExists(keys, []string{_KEY_ENABLE_API, _KEY_ENABLE_API_SHORT}) {
+		baseFlags.EnableAPI = cliFlags.EnableAPI
+	}
+
+	if CheckFlagsExists(keys, []string{_KEY_API_KEY, _KEY_API_KEY_SHORT}) {
+		baseFlags.APIKey = cliFlags.APIKey
 	}
 
 	// 设置 Cookie 相关信息

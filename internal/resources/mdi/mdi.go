@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"path/filepath"
+	"sort"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -86,4 +87,34 @@ func GetIconByName(name string) string {
 	}
 
 	return `<img src="/` + svgFile + `" width="68" height="68" alt="">`
+}
+
+func IconExists(name string) bool {
+	if name == "" {
+		return false
+	}
+	_, ok := iconMap[strings.ToLower(name)]
+	return ok
+}
+
+// SearchIcons returns icon names containing q (case-insensitive). Empty q lists from start. Cap limit at 100.
+func SearchIcons(q string, limit int) []string {
+	if limit <= 0 {
+		limit = 20
+	}
+	if limit > 100 {
+		limit = 100
+	}
+	q = strings.ToLower(strings.TrimSpace(q))
+	names := make([]string, 0)
+	for name := range iconMap {
+		if q == "" || strings.Contains(name, q) {
+			names = append(names, name)
+		}
+	}
+	sort.Strings(names)
+	if len(names) > limit {
+		names = names[:limit]
+	}
+	return names
 }

@@ -9,6 +9,7 @@ type Flags struct {
 	Port                   int
 	EnableGuide            bool
 	EnableEditor           bool
+	EnableAPI              bool
 	EnableOfflineMode      bool
 	EnableMinimumRequest   bool
 	EnableDeprecatedNotice bool
@@ -20,6 +21,7 @@ type Flags struct {
 	Pass             string
 	UserIsGenerated  bool
 	PassIsGenerated  bool
+	APIKey           string
 
 	CookieName   string
 	CookieSecret string
@@ -30,6 +32,7 @@ type Envs struct {
 	Port                   int  `env:"FLARE_PORT"`
 	EnableGuide            bool `env:"FLARE_GUIDE"`
 	EnableEditor           bool `env:"FLARE_EDITOR"`
+	EnableAPI              bool `env:"FLARE_API"`
 	EnableOfflineMode      bool `env:"FLARE_OFFLINE"`
 	EnableMinimumRequest   bool `env:"FLARE_MINI_REQUEST"`
 	EnableDeprecatedNotice bool `env:"FLARE_DEPRECATED_NOTICE"`
@@ -39,6 +42,7 @@ type Envs struct {
 	DisableLoginMode bool   `env:"FLARE_DISABLE_LOGIN"`
 	User             string `env:"FLARE_USER,unset"`
 	Pass             string `env:"FLARE_PASS,unset"`
+	APIKey           string `env:"FLARE_API_KEY,unset"`
 
 	CookieName   string `env:"FLARE_COOKIE_NAME"`
 	CookieSecret string `env:"FLARE_COOKIE_SECRET"`
@@ -49,6 +53,7 @@ type EnvFile struct {
 	Port                   int  `ini:"FLARE_PORT,omitempty"`
 	EnableGuide            bool `ini:"FLARE_GUIDE,omitempty"`
 	EnableEditor           bool `ini:"FLARE_EDITOR,omitempty"`
+	EnableAPI              bool `ini:"FLARE_API,omitempty"`
 	EnableOfflineMode      bool `ini:"FLARE_OFFLINE,omitempty"`
 	EnableMinimumRequest   bool `ini:"FLARE_MINI_REQUEST,omitempty"`
 	EnableDeprecatedNotice bool `ini:"FLARE_DEPRECATED_NOTICE,omitempty"`
@@ -58,6 +63,7 @@ type EnvFile struct {
 	DisableLoginMode bool   `ini:"FLARE_DISABLE_LOGIN,omitempty"`
 	User             string `ini:"FLARE_USER,omitempty"`
 	Pass             string `ini:"FLARE_PASS,omitempty"`
+	APIKey           string `ini:"FLARE_API_KEY,omitempty"`
 
 	CookieName   string `ini:"FLARE_COOKIE_NAME,omitempty"`
 	CookieSecret string `ini:"FLARE_COOKIE_SECRET,omitempty"`

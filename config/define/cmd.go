@@ -13,6 +13,7 @@ const (
 	DEFAULT_ENABLE_OFFLINE           = false
 	DEFAULT_USER_NAME                = "flare"
 	DEFAULT_ENABLE_EDITOR            = true
+	DEFAULT_ENABLE_API               = true
 	DEFAULT_VISIBILITY               = "DEFAULT"
 	DEFAULT_DISABLE_CSP              = false
 
@@ -30,11 +31,13 @@ func GetDefaultEnvVars() FlareModel.Envs {
 		DisableLoginMode:       DEFAULT_DISABLE_LOGIN,
 		EnableOfflineMode:      DEFAULT_ENABLE_OFFLINE,
 		EnableEditor:           DEFAULT_ENABLE_EDITOR,
+		EnableAPI:              DEFAULT_ENABLE_API,
 		Visibility:             DEFAULT_VISIBILITY,
 		DisableCSP:             DEFAULT_DISABLE_CSP,
 
-		User: DEFAULT_USER_NAME,
-		Pass: "",
+		User:   DEFAULT_USER_NAME,
+		Pass:   "",
+		APIKey: "",
 
 		CookieName:   DEFAULT_COOKIE_NAME,
 		CookieSecret: DEFAULT_COOKIE_SECRET,

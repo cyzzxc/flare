@@ -27,6 +27,12 @@ const (
 	_KEY_ENABLE_EDITOR       = "enable_editor"
 	_KEY_ENABLE_EDITOR_SHORT = "e"
 
+	_KEY_ENABLE_API       = "enable_api"
+	_KEY_ENABLE_API_SHORT = "a"
+
+	_KEY_API_KEY       = "api_key"
+	_KEY_API_KEY_SHORT = "A"
+
 	_KEY_DISABLE_CSP       = "disable_csp"
 	_KEY_DISABLE_CSP_SHORT = "c"
 

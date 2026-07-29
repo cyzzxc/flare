@@ -65,7 +65,11 @@ func ParseEnvVars() (stor FlareModel.Flags) {
 	stor.Visibility = defaults.Visibility
 	stor.EnableOfflineMode = defaults.EnableOfflineMode
 	stor.EnableEditor = defaults.EnableEditor
+	stor.EnableAPI = defaults.EnableAPI
+	stor.APIKey = defaults.APIKey
 	stor.DisableCSP = defaults.DisableCSP
+	stor.CookieName = defaults.CookieName
+	stor.CookieSecret = defaults.CookieSecret
 
 	return stor
 }
