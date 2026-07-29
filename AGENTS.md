@@ -15,6 +15,27 @@ gofmt -s -w .
 
 Docker/release also run `go run build/build.go` first (see `Dockerfile`, `.goreleaser.yaml`).
 
+## Docker
+
+Image: `cyzzxc/flare` (multi-arch: `linux/amd64`, `linux/arm64`). Runtime YAML lives in container cwd `/app`.
+
+```bash
+# compose (recommended)
+docker compose up -d
+# → http://localhost:5005  data in ./data/{apps,bookmarks,config}.yml
+
+# one-shot
+docker run -d --name flare -p 5005:5005 -v "$PWD/data:/app" cyzzxc/flare:latest
+```
+
+Build/push (needs `docker buildx` docker-container driver for multi-arch):
+
+```bash
+docker buildx build --platform linux/amd64,linux/arm64 -t cyzzxc/flare:latest --push .
+```
+
+Health: `GET /ping` (JSON `{"message":"pong"}`). Not `/health` (Dockerfile HEALTHCHECK path is stale).
+
 ## Source vs generated (easy to get wrong)
 
 | Edit here | Build writes here (go:embed / runtime) |
