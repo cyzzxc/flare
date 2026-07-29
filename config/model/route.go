@@ -42,6 +42,5 @@ type RouteMaps struct {
 	// Misc
 	RedirHome   Page `json:"RedirHome"`
 	RedirHelper API  `json:"RedirHelper"`
-	WeatherTest API  `json:"WeatherTest"`
 	HealthCheck API  `json:"HealthCheck"`
 }

@@ -19,10 +19,17 @@ func GetLocationAndWeatherShow() (string, bool) {
 	return options.Location, options.ShowWeather
 }
 
-func UpdateWeatherAndLocation(enable bool, location string) bool {
+func GetQWeatherConfig() (key, host string) {
+	options := GetAllSettingsOptions()
+	return options.QWeatherKey, options.QWeatherHost
+}
+
+func UpdateWeatherAndLocation(enable bool, location, key, host string) bool {
 	options := GetAllSettingsOptions()
 	options.ShowWeather = enable
 	options.Location = location
+	options.QWeatherKey = key
+	options.QWeatherHost = host
 	return saveAppConfigToYamlFile("config", options)
 }
 

@@ -107,5 +107,13 @@ func ParseEnvFile(baseFlags FlareModel.Flags) FlareModel.Flags {
 	baseFlags.CookieName = GetDotEnvFileStringOrDefault(envs, "FLARE_COOKIE_NAME", baseFlags.CookieName)
 	baseFlags.CookieSecret = GetDotEnvFileStringOrDefault(envs, "FLARE_COOKIE_SECRET", baseFlags.CookieSecret)
 
+	// weather keys are read via os.Getenv in settings/weather
+	if v := strings.TrimSpace(envs.Section("").Key("FLARE_QWEATHER_KEY").String()); v != "" {
+		_ = os.Setenv("FLARE_QWEATHER_KEY", v)
+	}
+	if v := strings.TrimSpace(envs.Section("").Key("FLARE_QWEATHER_HOST").String()); v != "" {
+		_ = os.Setenv("FLARE_QWEATHER_HOST", v)
+	}
+
 	return baseFlags
 }

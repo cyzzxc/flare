@@ -10,4 +10,5 @@ type Weather struct {
 	Humidity           int    `json:"humidity"`
 	Expires            int64  `json:"expires"`
 	Location           string `json:"location"`
+	UmbrellaHint       string `json:"umbrellaHint"`
 }

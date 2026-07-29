@@ -25,15 +25,9 @@ func init() {
 	}
 
 	data := FlareData.GetAllSettingsOptions()
-
 	if data.Location == "" && data.ShowWeather {
-		log.Println("天气模块启用，当前应用尚未配置区域，尝试自动获取区域名称。")
-		location, _ := weather.GetMyIPLocation()
-		FlareData.UpdateWeatherAndLocation(data.ShowWeather, location)
-	} else {
-		FlareData.UpdateWeatherAndLocation(data.ShowWeather, data.Location)
+		log.Println("天气模块启用，请在设置页填写地区与和风 Key / API Host")
 	}
-
 }
 
 func RegisterRouting(router *gin.Engine) {
@@ -179,6 +173,7 @@ func updateWeatherData(location string) {
 			_CACHE_WEATHER_DATA.ExternalLastUpdate = data.ExternalLastUpdate
 			_CACHE_WEATHER_DATA.Humidity = data.Humidity
 			_CACHE_WEATHER_DATA.IsDay = data.IsDay
+			_CACHE_WEATHER_DATA.UmbrellaHint = data.UmbrellaHint
 			_CACHE_WEATHER_DATA.Expires = data.Expires
 			_CACHE_WEATHER_DATA.Location = location
 		}

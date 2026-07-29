@@ -30,5 +30,7 @@ tmp
 apps.yml
 bookmarks.yml
 config.yml
+.env
+docs/
 
 RELEASE_*

@@ -46,8 +46,12 @@ IconMode: "DEFAULT"
 Theme: "blackboard"
 # 是否启用天气组件
 ShowWeather: true
-# 天气组件使用的位置，仅在程序自动识别出错时，需要修改
-Location: "北京市"
+# 天气组件使用的位置（城市名 / LocationID / 经度,纬度）
+Location: "北京"
+# 和风天气 API KEY（也可设环境变量 FLARE_QWEATHER_KEY）
+QWeatherKey: ""
+# 和风天气 API Host，如 xxx.qweatherapi.com（也可设 FLARE_QWEATHER_HOST）
+QWeatherHost: ""
 # 保持界面中链接大小写和配置中一致
 KeepLetterCase: false
 `)

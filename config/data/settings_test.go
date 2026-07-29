@@ -23,7 +23,7 @@ func TestGetAndSetWeatherAndLocation(t *testing.T) {
 	targetEnable := false
 	targetLocation := "地球"
 
-	ok := UpdateWeatherAndLocation(targetEnable, targetLocation)
+	ok := UpdateWeatherAndLocation(targetEnable, targetLocation, "k", "h.example.com")
 	if !ok {
 		t.Fatal("UpdateWeatherAndLocation Error")
 	}
@@ -31,6 +31,10 @@ func TestGetAndSetWeatherAndLocation(t *testing.T) {
 	location, enable := GetLocationAndWeatherShow()
 	if enable != targetEnable && location != targetLocation {
 		t.Fatal("GetLocationAndWeatherShow Error")
+	}
+	key, host := GetQWeatherConfig()
+	if key != "k" || host != "h.example.com" {
+		t.Fatal("GetQWeatherConfig Error")
 	}
 
 	filePath := getConfigPath("config")

@@ -21,33 +21,45 @@
         <div class="form-group">
             <label for="settings-location">地区名称</label>
             {{ if .ShowWeatherModule }}
-            <input type="text" name="location" id="settings-location" class="option-input" placeholder="山西省太原市" value="{{.Location}}">
-            <p class="help-text">因接口需要，直辖市直接输入城市名称，如：北京市，其他省市需要使用完整名称，如：山西省太原市</p>
-            <input class="btn-submit" type="submit" value="保存修改" />
+            <input type="text" name="location" id="settings-location" class="option-input" placeholder="北京" value="{{.Location}}">
+            <p class="help-text">城市名（如「北京」「太原」）、LocationID 或「经度,纬度」。</p>
             {{ else }}
             {{ if .ShowWeather }}
-            <input type="text" name="location" id="settings-location" class="option-input" placeholder="山西省太原市" value="{{.Location}}" disabled>
+            <input type="text" name="location" id="settings-location" class="option-input" placeholder="北京" value="{{.Location}}" disabled>
+            <p class="help-text">如需使用天气功能，请关闭“离线模式”并选择“启用天气功能”。</p>
+            {{ else }}
+            <input type="text" name="location" id="settings-location" class="option-input" placeholder="北京" value="{{.Location}}">
+            <p class="help-text">如需使用天气功能，请选择“启用天气功能”。</p>
+            {{ end }}
+            {{ end }}
+        </div>
+
+        <div class="form-group">
+            <label for="settings-qweather-key">和风 API Key</label>
+            {{ if .ShowWeatherModule }}
+            <input type="text" name="qweather_key" id="settings-qweather-key" class="option-input" placeholder="控制台项目凭据 API KEY" value="{{.QWeatherKey}}" autocomplete="off">
+            {{ else }}
+            <input type="text" name="qweather_key" id="settings-qweather-key" class="option-input" placeholder="控制台项目凭据 API KEY" value="{{.QWeatherKey}}" disabled>
+            {{ end }}
+        </div>
+
+        <div class="form-group">
+            <label for="settings-qweather-host">和风 API Host</label>
+            {{ if .ShowWeatherModule }}
+            <input type="text" name="qweather_host" id="settings-qweather-host" class="option-input" placeholder="xxx.qweatherapi.com" value="{{.QWeatherHost}}" autocomplete="off">
+            <p class="help-text">控制台 → 设置 → API Host，不要带 https://。也可改用环境变量 FLARE_QWEATHER_KEY / FLARE_QWEATHER_HOST。</p>
+            <input class="btn-submit" type="submit" value="保存修改" />
+            {{ else }}
+            <input type="text" name="qweather_host" id="settings-qweather-host" class="option-input" placeholder="xxx.qweatherapi.com" value="{{.QWeatherHost}}" disabled>
+            {{ if .ShowWeather }}
             <p class="help-text">如需使用天气功能，请关闭“离线模式”并选择“启用天气功能”。</p>
             <input class="btn-submit" type="submit" value="保存修改" disabled/>
             {{ else }}
-            <input type="text" name="location" id="settings-location" class="option-input" placeholder="山西省太原市" value="{{.Location}}">
             <p class="help-text">如需使用天气功能，请选择“启用天气功能”。</p>
             <input class="btn-submit" type="submit" value="保存修改"/>
             {{ end }}
             {{ end }}
         </div>
     </form>
-
-    {{ if .ShowWeatherModule }}
-    <form method="POST" action="{{ .SettingPagesAPI.WeatherTest.Path }}">
-        <div class="form-group">
-            <label for="settings-weather-tester">测试接口</label>
-            <input type="text" name="location" id="settings-weather-tester" class="option-input" placeholder="点击按钮，进行测试" value="{{.TestResult}}" readonly />
-            <p class="help-text">你可以点击按钮，对上面设置的地理位置进行获取天气测试</p>
-            <input class="btn-submit" type="submit" value="测试接口" />
-        </div>
-    </form>
-    {{ end }}
-
 </div>
 {{ end }}

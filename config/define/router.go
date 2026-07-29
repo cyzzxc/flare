@@ -94,17 +94,6 @@ func getSettingPages() FlareModel.RouteMaps {
 
 var SettingPages = getSettingPages()
 
-func getSettingAPIs() FlareModel.RouteMaps {
-	return FlareModel.RouteMaps{
-		WeatherTest: FlareModel.API{
-			Name: "Weather Tester",
-			Path: "/settings/weather/test",
-		},
-	}
-}
-
-var SettingPagesAPI = getSettingAPIs()
-
 func getMiscPages() FlareModel.RouteMaps {
 	return FlareModel.RouteMaps{
 		HealthCheck: FlareModel.API{

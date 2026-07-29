@@ -94,4 +94,5 @@ On by default (`--enable_api` / `FLARE_API`). Optional auth: `--api_key` / `FLAR
 - Tests under `config/data` may touch workdir YAML paths; prefer package-scoped runs when iterating.
 - Login/auth defaults: without `FLARE_USER`/`FLARE_PASS`, username defaults and password is auto-generated (logged at start). `--disable-login` skips auth for local UI work.
 - API is independent of session login; empty `api_key` means open if API is enabled.
+- Weather uses 和风 QWeather: set Key/Host in `/settings/weather` (`config.yml` `QWeatherKey`/`QWeatherHost`) or env `FLARE_QWEATHER_KEY` + `FLARE_QWEATHER_HOST`. Location = city name / LocationID / `lon,lat`.
 - Do not commit local binary `flare` or workdir `*.yml` / `.env`.

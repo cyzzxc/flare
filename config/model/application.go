@@ -18,6 +18,8 @@ type Application struct {
 	Theme                   string `yaml:"Theme" json:"Theme"`
 	ShowWeather             bool   `yaml:"ShowWeather" json:"ShowWeather"`
 	Location                string `yaml:"Location" json:"Location"`
+	QWeatherKey             string `yaml:"QWeatherKey" json:"QWeatherKey"`
+	QWeatherHost            string `yaml:"QWeatherHost" json:"QWeatherHost"`
 	EnableEncryptedLink     bool   `yaml:"EnableEncryptedLink" json:"EnableEncryptedLink"`
 	IconMode                string `yaml:"IconMode" json:"IconMode"`
 	KeepLetterCase          bool   `yaml:"KeepLetterCase" json:"KeepLetterCase"`

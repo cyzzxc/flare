@@ -23,7 +23,7 @@
           element: document.querySelector("#plugin-weather"),
           title: "Flare 天气组件",
           intro:
-            "这里是目前 Flare 唯一一处需要和公网（腾讯天气、IPIP）取得联系的模块。<br/><br/>你可以在设置中调整天气位置，来展示你的城市天气。如果你不希望有任何公网请求，可以通过设置“完全离线”来杜绝所有公网请求。",
+            "这里是目前 Flare 唯一一处需要和公网（和风天气 QWeather）取得联系的模块。<br/><br/>你可以在设置中配置地区与和风 Key / API Host。如果你不希望有任何公网请求，可以通过设置“完全离线”来杜绝所有公网请求。",
         },
         {
           element: document.querySelector("#container-apps"),
