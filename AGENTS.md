@@ -34,8 +34,6 @@ Build/push (needs `docker buildx` docker-container driver for multi-arch):
 docker buildx build --platform linux/amd64,linux/arm64 -t cyzzxc/flare:latest --push .
 ```
 
-Health: `GET /ping` (JSON `{"message":"pong"}`). Not `/health` (Dockerfile HEALTHCHECK path is stale).
-
 ## Source vs generated (easy to get wrong)
 
 | Edit here | Build writes here (go:embed / runtime) |
